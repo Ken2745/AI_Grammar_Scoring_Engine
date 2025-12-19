@@ -1,10 +1,10 @@
-# 🗣️ AI Grammar Scoring Engine
+# AI Grammar Scoring Engine
 
 A **local-first AI application** that evaluates spoken English grammar in real time. The system transcribes user speech and scores grammatical proficiency using a zero-shot Large Language Model (LLM), returning both a **numerical score** and **actionable feedback** — all while keeping user data private.
 
 ---
 
-## 🚀 Overview
+## Overview
 
 The AI Grammar Scoring Engine is a proof-of-concept project designed to explore:
 
@@ -16,7 +16,7 @@ The application is ideal for **English language learners**, **educational demos*
 
 ---
 
-## ✨ Features
+## Features
 
 * **Speech-to-Text Transcription**
   Uses OpenAI Whisper for accurate transcription across accents and dialects.
@@ -38,16 +38,16 @@ The application is ideal for **English language learners**, **educational demos*
 
 ---
 
-## 🧠 How It Works
+## How It Works
 
 The engine operates as a **two-stage AI pipeline**:
 
-### 1️⃣ Transcription Stage
+### 1 Transcription Stage
 
 * User uploads a `.wav` or `.mp3` audio file
 * Whisper transcribes speech into raw text
 
-### 2️⃣ Analysis Stage
+### 2 Analysis Stage
 
 * The transcript is embedded into a structured prompt
 * The LLM evaluates grammar using a predefined rubric
@@ -61,7 +61,7 @@ The Streamlit frontend parses and displays these results clearly.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Python 3.11+**
 * **Streamlit** – Web interface
@@ -72,7 +72,7 @@ The Streamlit frontend parses and displays these results clearly.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 AI_Grammar/
@@ -89,7 +89,7 @@ AI_Grammar/
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Prerequisites
 
@@ -137,7 +137,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Usage
+## Usage
 
 Launch the Streamlit app:
 
@@ -155,7 +155,7 @@ On first launch, the AI models will be downloaded locally (one-time setup).
 
 ---
 
-## 🔒 Privacy
+## Privacy
 
 This application is **fully local-first**:
 
@@ -167,7 +167,7 @@ Ideal for privacy-sensitive demos and offline use.
 
 ---
 
-## 🧪 Future Enhancements
+## Future Enhancements
 
 * Fine-tuned grammar regression model
 * Hybrid scoring (ML model + LLM explanation)
@@ -175,23 +175,3 @@ Ideal for privacy-sensitive demos and offline use.
 * User accounts and progress tracking
 * Microphone-based live recording
 * Quantized models for faster CPU inference
-
----
-
-## 📌 Disclaimer
-
-This project is a **proof of concept** and not intended for high-stakes language assessment or certification.
-
----
-
-## 👤 Author
-
-Developed as an AI/ML portfolio project demonstrating:
-
-* End-to-end AI pipelines
-* Local LLM deployment
-* Applied NLP & speech processing
-
----
-
-⭐ If you find this project useful, feel free to star the repository!
