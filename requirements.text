@@ -1,0 +1,24 @@
+# Core Python
+python>=3.11
+
+# UI
+streamlit>=1.32.0
+
+# Speech-to-Text
+openai-whisper>=20231117
+ffmpeg-python>=0.2.0
+
+# Machine Learning
+torch>=2.1.0
+transformers>=4.41.0
+accelerate>=0.30.0
+safetensors>=0.4.0
+
+# Hugging Face utilities
+huggingface-hub>=0.23.0
+
+# Data handling
+numpy>=1.26.0
+
+# Utilities
+tqdm>=4.66.0
