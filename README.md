@@ -4,18 +4,6 @@ A **local-first AI application** that evaluates spoken English grammar in real t
 
 ---
 
-## Overview
-
-The AI Grammar Scoring Engine is a proof-of-concept project designed to explore:
-
-* Zero-shot grammatical evaluation using LLMs
-* Speech-to-text pipelines for spoken language assessment
-* Privacy-preserving, fully local AI systems
-
-The application is ideal for **English language learners**, **educational demos**, and **AI/ML portfolios**.
-
----
-
 ## Features
 
 * **Speech-to-Text Transcription**
@@ -163,15 +151,7 @@ This application is **fully local-first**:
 * No transcripts are stored or transmitted
 * All models run on the user’s machine
 
-Ideal for privacy-sensitive demos and offline use.
-
 ---
 
-## Future Enhancements
-
-* Fine-tuned grammar regression model
-* Hybrid scoring (ML model + LLM explanation)
-* Fluency & pronunciation metrics
-* User accounts and progress tracking
 * Microphone-based live recording
 * Quantized models for faster CPU inference
