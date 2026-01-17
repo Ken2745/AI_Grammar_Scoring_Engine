@@ -1,51 +1,58 @@
 # AI Grammar Scoring Engine
 
-A **local-first AI application** that evaluates spoken English grammar in real time. The system transcribes user speech and scores grammatical proficiency using a zero-shot Large Language Model (LLM), returning both a **numerical score** and **actionable feedback** — all while keeping user data private.
+A **local-first AI application** that evaluates spoken English grammar from audio input. The system transcribes user speech using **OpenAI Whisper** and presents the transcript for analysis. The application is designed with a **privacy-preserving architecture** where all processing runs entirely on the user’s machine.
 
 ---
 
-## Features
+## Current Features
 
-* **Speech-to-Text Transcription**
-  Uses OpenAI Whisper for accurate transcription across accents and dialects.
+### Speech-to-Text Transcription
 
-* **LLM-Powered Grammar Analysis**
-  Employs a lightweight LLM (TinyLlama) to perform rubric-based grammatical evaluation.
+* Uses **OpenAI Whisper (local model)** to transcribe `.wav` and `.mp3` audio files
+* Handles diverse accents and speaking styles
+* Runs fully offline after initial model download
 
-* **Rubric-Based Scoring (1–5)**
-  Scores spoken grammar according to a predefined proficiency rubric.
+### Interactive Web Interface
 
-* **Qualitative Feedback**
-  Provides a clear justification and concrete examples of grammatical errors.
+* Built with **Streamlit**
+* Simple audio upload workflow
+* Clear presentation of results
+* Custom dark-themed UI styling
 
-* **Privacy-First Architecture**
-  All processing runs 100% locally. No audio or text data leaves the user’s machine.
+### Privacy-First Architecture
 
-* **Interactive Web UI**
-  Clean, modern interface built with Streamlit.
+* No external API calls
+* No audio or transcript data is stored or transmitted
+* All inference runs locally on the user’s machine
 
 ---
 
-## How It Works
+## Planned / Scaffolded Features
 
-The engine operates as a **two-stage AI pipeline**:
+The codebase includes structure for future enhancements:
 
-### 1 Transcription Stage
+* **Grammar analysis using a lightweight LLM (TinyLlama)**
+* **Rubric-based grammar scoring (1–5)**
+* **Structured output** (score, justification, example errors)
+* **Actionable feedback for language learners**
 
-* User uploads a `.wav` or `.mp3` audio file
-* Whisper transcribes speech into raw text
+These components are intentionally modular and can be extended by implementing the `GrammarAnalyzer.evaluate()` method.
 
-### 2 Analysis Stage
+---
 
-* The transcript is embedded into a structured prompt
-* The LLM evaluates grammar using a predefined rubric
-* The model returns structured JSON containing:
+## How the Application Works
 
-  * `score` – Grammar score (1.0–5.0)
-  * `justification` – Explanation of the score
-  * `examples` – Direct quotes highlighting errors
+### Transcription Stage
 
-The Streamlit frontend parses and displays these results clearly.
+1. User uploads a `.wav` or `.mp3` file
+2. Audio is processed locally using Whisper
+3. Spoken English is converted into raw text
+
+### Analysis Stage (Scaffolded)
+
+* A grammar analysis pipeline is initialized
+* A scoring rubric is defined
+* The evaluation logic is prepared for future LLM-based processing
 
 ---
 
@@ -53,10 +60,11 @@ The Streamlit frontend parses and displays these results clearly.
 
 * **Python 3.11+**
 * **Streamlit** – Web interface
-* **OpenAI Whisper** – Speech-to-text
-* **TinyLlama (Transformers)** – Grammar analysis
+* **OpenAI Whisper** – Speech-to-text transcription
+* **TinyLlama (Transformers)** – Grammar analysis (scaffolded)
 * **PyTorch** – Model execution
-* **Hugging Face Hub** – Model management
+* **Hugging Face Transformers** – Model loading
+* **FFmpeg** – Audio processing dependency
 
 ---
 
@@ -68,7 +76,7 @@ AI_Grammar/
 ├── app.py                 # Streamlit application
 ├── requirements.txt       # Project dependencies
 ├── pipeline/
-│   ├── analyzer.py        # LLM grammar evaluation
+│   ├── analyzer.py        # Grammar analysis scaffold (LLM-based)
 │   ├── transcriber.py     # Whisper-based transcription
 │   ├── rubric.py          # Grammar scoring rubric
 │   └── __init__.py
@@ -82,9 +90,9 @@ AI_Grammar/
 ### Prerequisites
 
 * Python **3.11 or later**
-* FFmpeg (required for Whisper)
+* **FFmpeg** (required for Whisper)
 
-#### Verify FFmpeg
+Verify FFmpeg installation:
 
 ```bash
 ffmpeg -version
@@ -105,7 +113,7 @@ Create and activate a virtual environment:
 
 **Windows**
 
-```powershell
+```bash
 python -m venv .venv
 .\.venv\Scripts\activate
 ```
@@ -133,13 +141,13 @@ Launch the Streamlit app:
 streamlit run app.py
 ```
 
-On first launch, the AI models will be downloaded locally (one-time setup).
+On first launch, the required AI models will be downloaded locally (one-time setup).
 
 ### Steps
 
 1. Upload a `.wav` or `.mp3` file
 2. Click **Analyze Audio**
-3. View your grammar score and feedback
+3. View the transcription and UI output
 
 ---
 
@@ -148,10 +156,9 @@ On first launch, the AI models will be downloaded locally (one-time setup).
 This application is **fully local-first**:
 
 * No audio is uploaded to external servers
-* No transcripts are stored or transmitted
-* All models run on the user’s machine
+* No transcripts are stored
+* All AI models run on-device
 
 ---
 
-* Microphone-based live recording
-* Quantized models for faster CPU inference
+
